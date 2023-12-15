@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoutingExample", "RoutingExample\RoutingExample.csproj", "{430F8A76-954A-476E-A7CC-2C2FD169682F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0660D990-5E17-4764-9F53-EE4E17C54C3A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{430F8A76-954A-476E-A7CC-2C2FD169682F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{430F8A76-954A-476E-A7CC-2C2FD169682F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{430F8A76-954A-476E-A7CC-2C2FD169682F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{430F8A76-954A-476E-A7CC-2C2FD169682F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {325386C8-4B17-4550-8FDA-D25B83EA0103}
+	EndGlobalSection
+EndGlobal
