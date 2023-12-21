@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website Title </title>
+</head>
+<body>
+
+    @* @await Component.InvokeAsync("Grid") *@
+    <button id="button" type="button">Person Details</button>
+
+    <div class="container" id="dt">
+
+    </div>
+
+    <script>
+        document.querySelector("#button").addEventListener('click', async function () {
+            var resp = await fetch('details');
+            var data = await resp.text();
+            document.querySelector("#dt").innerHTML = data;
+        });
+    </script>
+</body>
+</html>
