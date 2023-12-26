@@ -15,7 +15,7 @@ namespace ModelBindingAndValidation.Validation
             if(value!=null)
             {
                 var dob = (DateTime)value;
-                if (dob.Year >= 2000)
+                if (dob.Year >= _year)
                 {
                     return new ValidationResult(string.Format(ErrorMessage,_year));
                 }
