@@ -1,0 +1,9 @@
+﻿@model List<StockServiceHttpClient.Models.StockSymbol>
+
+<select id="symbols" onchange="func()">
+    @foreach(var item in Model)
+    {
+        <option value="@item.symbol">@item.symbol</option>
+    }
+
+</select>

@@ -1,0 +1,47 @@
+﻿@model StockServiceHttpClient.Models.StockModel
+
+<div id="drop">
+
+</div>
+
+<table class="table table-bordered" style="width:auto">
+    <tr>
+        <th>Current Price</th>
+        <th>High Price</th>
+        <th>Low Price</th>
+        <th>Open Price</th>
+        <th>Previous Closed Price</th>
+    </tr>
+    <tr>
+        <td>
+            @Model.c
+        </td>
+        <td>
+            @Model.h
+        </td>
+        <td>
+            @Model.l
+        </td>
+        <td>
+            @Model.o
+        </td>
+        <td>
+            @Model.pc
+        </td>
+    </tr>
+
+</table>
+
+<script>
+    window.onload = async function() {
+        var resp = await fetch('Symbol');
+        var data = await resp.text();
+        document.querySelector('#drop').innerHTML = data;
+        };
+
+    function func(){
+        var drop = document.querySelector('#symbols');
+        var value = drop.options[drop.selectedIndex].value;
+        window.location = 'http://localhost:5272/api/v1/stock?stock='+value;
+    }
+</script>
