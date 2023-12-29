@@ -16,8 +16,9 @@ namespace StockServiceHttpClient.Controllers
         public async Task<IActionResult> Symbol()
         {
             List<StockSymbol> data = await _stock.GetStockSymbol();
+            
 
-            return PartialView(data);
+            return PartialView(data.OrderBy(x=>x.symbol).ToList());
         }
 
         [Route("Stock")]

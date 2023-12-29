@@ -1,7 +1,9 @@
 ﻿@model StockServiceHttpClient.Models.StockModel
 
 <div id="drop">
-
+    <select id="symbols" onchange="func()">
+        <option value="select">Select</option>
+    </select>
 </div>
 
 <table class="table table-bordered" style="width:auto">
@@ -33,12 +35,21 @@
 </table>
 
 <script>
-    window.onload = async function() {
-        var resp = await fetch('Symbol');
-        var data = await resp.text();
-        document.querySelector('#drop').innerHTML = data;
-        };
-
+    jQuery(document).ready(function () {
+        // var resp = await fetch('Symbol');
+        // var data = await resp.text();
+        // document.querySelector('#drop').innerHTML = data;
+        // };
+        $.ajax({
+            type: 'GET',
+            url: 'Symbol',
+            success: function (data) {
+                if (data.length > 0) {
+                    document.querySelector('#symbols').innerHTML = data;
+                }
+            }
+        });
+    });
     function func(){
         var drop = document.querySelector('#symbols');
         var value = drop.options[drop.selectedIndex].value;
