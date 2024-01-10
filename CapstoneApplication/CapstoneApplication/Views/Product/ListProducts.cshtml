@@ -1,0 +1,23 @@
+﻿@model List<ProductResponse>
+
+<div class="row px-2 py-2">
+@foreach(ProductResponse ptd in Model)
+{
+    <div class="col py-2">
+        <div class="card" style="margin-top: 40px; width: 500px;">
+        <div class="card-body">
+            <h5 class="card-title">Product</h5>
+            <p class="card-text">
+                <h6><b>Product Name:</b>@ptd.ProductName</h6>
+                <h6><b>Product Description:</b>@ptd.ProductDescription</h6>
+                <h6><b>Product Category</b>:@ptd.CategoryName</h6>
+                <h6><b>Product Price:</b>@ptd.CurrentPrice</h6>
+            </p>
+                    <a asp-controller="Product" asp-action="UpdateProduct" asp-route-productId="@ptd.ProductId">Edit Product</a>
+                    <a asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@ptd.ProductId">Delete Product</a>
+        </div>
+    </div>
+    </div>
+}
+</div>
+
