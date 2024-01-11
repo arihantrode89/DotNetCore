@@ -30,7 +30,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <input asp-for="CategoryId" class="form-control" />
+                @* <input asp-for="CategoryId" class="form-control" /> *@
+                @* <select asp-for="CategoryId">
+                    @foreach(CategoryResponse item in ViewBag.Categories)
+                    {
+                        <option value="@item.CategoryId">@item.CategoryName</option>
+                    }
+                </select> *@
+
+                <select asp-for="CategoryId" asp-items="@ViewBag.Categories">
+
+                </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">

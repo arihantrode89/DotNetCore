@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using RepositoryContracts;
 using ServiceContracts;
 using ServiceContracts.DTO;
@@ -18,6 +19,7 @@ namespace CapstoneApplication.Controllers
             _prodService = productService;
             _ctgService = category;
         }
+
         [Route("/")]
         public async Task<IActionResult> ListProducts()
         {
@@ -50,6 +52,9 @@ namespace CapstoneApplication.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateProduct(int ProductId)
         {
+            List<CategoryResponse> category = await _ctgService.GetCategories();
+            var ctg = category.Select(x => new SelectListItem() { Value = x.CategoryId.ToString(), Text = x.CategoryName });
+            ViewBag.Categories = ctg;
             var data  = await _prodService.GetProductById(ProductId);
             return View(data.ToUpdateRequest());
         }
@@ -66,6 +71,17 @@ namespace CapstoneApplication.Controllers
             ViewBag.Errors = ModelState.Values.SelectMany(x=>x.Errors).Select(s=>s.ErrorMessage).ToList();
             return View();
 
+        }
+
+        [Route("/DeleteProduct")]
+        public async Task<IActionResult> DeleteProduct(int ProductId)
+        {
+            bool succ = await _prodRepo.DeleteProduct(ProductId);
+            if(succ)
+            {
+                return RedirectToAction("ListProducts");
+            }
+            return RedirectToAction("ListProducts");
         }
     }
 }

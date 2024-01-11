@@ -13,11 +13,30 @@
                 <h6><b>Product Category</b>:@ptd.CategoryName</h6>
                 <h6><b>Product Price:</b>@ptd.CurrentPrice</h6>
             </p>
-                    <a asp-controller="Product" asp-action="UpdateProduct" asp-route-productId="@ptd.ProductId">Edit Product</a>
-                    <a asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@ptd.ProductId">Delete Product</a>
+                    <a asp-controller="Product" asp-action="UpdateProduct" asp-route-productId="@ptd.ProductId" class="btn btn-info">Edit Product</a>
+                    <a asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@ptd.ProductId" class="btn btn-danger">Delete Product</a>
+                    <button id="delete" type="button" value="delete" onclick="DeleteProduct(@ptd.ProductId)">Delete</button>
+        </div>
         </div>
     </div>
-    </div>
 }
+
 </div>
 
+
+<script>
+    function DeleteProduct(id){
+        if (confirm('Do you want to delete')) {
+            $.ajax({
+                type: 'GET',
+                url: 'DeleteProduct?productid='+id,
+                success: function () {
+                    window.location = 'http://localhost:5071/'
+                }
+            })
+        }
+        else {
+            alert("Deletion Cancelled");
+        }
+    }
+</script>
