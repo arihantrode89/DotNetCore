@@ -41,7 +41,11 @@ namespace StockServiceHttpClient.StockService
                 var resp = await client.SendAsync(req);
                 var stream = resp.Content.ReadAsStream();
                 var reader = new StreamReader(stream).ReadToEnd();
-                var stockdata = JsonSerializer.Deserialize<List<StockSymbol>>(reader);
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                var stockdata = JsonSerializer.Deserialize<List<StockSymbol>>(reader,options);
                 return stockdata;
 
             }

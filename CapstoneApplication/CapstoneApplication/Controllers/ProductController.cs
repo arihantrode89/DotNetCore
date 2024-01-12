@@ -76,7 +76,7 @@ namespace CapstoneApplication.Controllers
         [Route("/DeleteProduct")]
         public async Task<IActionResult> DeleteProduct(int ProductId)
         {
-            bool succ = await _prodRepo.DeleteProduct(ProductId);
+            bool succ = await _prodService.DeleteProduct(ProductId);
             if(succ)
             {
                 return RedirectToAction("ListProducts");
