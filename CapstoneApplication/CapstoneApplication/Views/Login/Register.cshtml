@@ -1,0 +1,50 @@
+﻿@model PersonRegister
+
+<form asp-action="Register" asp-controller="Login" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-input"/>
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-input" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-input" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <div>
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" class="form-input" />
+        <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+    <div>
+        
+        <span asp-validation-summary="All"></span>
+    </div>
+
+
+</form>
+<div class="container">
+@if (ViewBag.Errors != null)
+{
+    <div class="text-red ml">
+        <ul>
+            @foreach (string error in ViewBag.Errors)
+            {
+                <li class="ml">@error</li>
+            }
+        </ul>
+    </div>
+}
+</div>

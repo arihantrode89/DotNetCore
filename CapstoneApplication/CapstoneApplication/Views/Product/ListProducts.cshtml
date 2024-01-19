@@ -1,5 +1,9 @@
 ﻿@model List<ProductResponse>
 
+@{
+    var env = System.Environment.GetEnvironmentVariable("DBUser");
+}
+@env
 <div class="row px-2 py-2">
 @foreach(ProductResponse ptd in Model)
 {

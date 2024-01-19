@@ -1,0 +1,42 @@
+﻿@model LoginDTO
+
+<form asp-action="Login" asp-controller="Login" method="post">
+
+    <div>
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-input" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-input" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <div>
+        <label asp-for="KeepSignIn"></label>
+        <input asp-for="KeepSignIn" class="form-input" />
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+    <div>
+
+        <span asp-validation-summary="All"></span>
+    </div>
+</form>
+<div class="container">
+    @if (ViewBag.Errors != null)
+    {
+        <div class="text-red ml">
+            <ul>
+                @foreach (string error in ViewBag.Errors)
+                {
+                    <li class="ml">@error</li>
+                }
+            </ul>
+        </div>
+    }
+</div>
